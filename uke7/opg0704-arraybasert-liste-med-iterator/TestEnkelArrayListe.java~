@@ -1,0 +1,12 @@
+class TestEnkelArrayListe {
+    public static void main(String[] args) {
+	EnkelArrayListe liste = new EnkelArrayListe(10);
+	liste.putt("En");
+	liste.putt("To");
+	liste.putt("Tre");
+
+	while (liste.hasNext()) {
+	    System.out.println(liste.next());
+	}
+    }
+}

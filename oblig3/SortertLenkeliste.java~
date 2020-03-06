@@ -1,0 +1,18 @@
+public class SortertLenkeliste<T extends Comparable<T>> extends Lenkeliste<T> {
+
+    public void leggTil(T x) {
+	int indeks = 0;
+	while (
+    }
+
+    public int compareTo (T annen) {
+	if (this.data < annen) {
+	    return -1;
+	} else if (this.data > annen) {
+	    return 1;
+	} else {
+	    return 0;
+	}
+    }
+
+}

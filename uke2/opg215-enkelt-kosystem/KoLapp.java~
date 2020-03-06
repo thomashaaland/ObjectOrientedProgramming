@@ -1,0 +1,12 @@
+public class KoLapp{
+
+    //Konstruktor
+    public KoLapp(int nummer){
+
+    }
+
+    // Returnerer et tildelt nummer paa kolappen.
+    public int hentNummer(){
+
+    }
+}

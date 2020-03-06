@@ -1,0 +1,11 @@
+public class Person {
+    String navn;
+    int alder;
+
+    public void giNavn(String n) {
+	navn = n;
+    }
+
+    public void giAlder(int a) {
+	alder = a;
+    }

@@ -1,0 +1,5 @@
+class KoProgram {
+    static public main(String[] args) {
+
+    }
+}

@@ -1,0 +1,12 @@
+class Masterstudent extends Student {
+
+    protected boolean tilgang;
+
+    public Masterstudent(String navnet,
+		   int alderen,
+		   String kurset,
+		   String laererstedet) {
+	super(navnet, alderen, kurset, laererstedet);
+	tilgang = true;
+    }
+}

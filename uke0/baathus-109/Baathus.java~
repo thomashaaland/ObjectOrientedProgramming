@@ -1,0 +1,15 @@
+class Baathus {
+
+    private int nPlasser;
+    
+    public Baathus(int antallPlasser) {
+	Baat[] baatList = new Baat[antallPlasser];
+	nPlasser = antallPlasser;
+    }
+
+    public skrivBaater() {
+	for (int i = 0; i < nPlasser; i++) {
+	    System.out.println(baatList[i].hentInfo());
+	}
+    }
+}

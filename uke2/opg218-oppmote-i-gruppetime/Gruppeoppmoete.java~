@@ -1,0 +1,3 @@
+class Gruppeoppmeoete {
+    private String[] navn = new String[14];
+    private boolean[] oppmoete = new boolean[14];

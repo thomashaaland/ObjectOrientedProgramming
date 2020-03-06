@@ -1,0 +1,7 @@
+class Brev {
+    private String avsender;
+    private String mottaker;
+    public Brev(String avsender, String mottaker) {
+	
+    }
+}

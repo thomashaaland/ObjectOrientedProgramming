@@ -1,0 +1,4 @@
+class TestProgram {
+    static void main(String[] args) {
+	A a = new A();
+	B b = bew B();

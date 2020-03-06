@@ -1,0 +1,6 @@
+import java.util.Scanner;
+class Linjenummer {
+    public static void main(String[] args) {
+	
+    }
+}

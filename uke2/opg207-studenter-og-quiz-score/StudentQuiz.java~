@@ -1,0 +1,8 @@
+class StudentQuiz {
+    public Student joakim;
+    public Student kristin;
+    public Student Dag;
+    static public void main(String[] args) {
+	Student
+    }
+}

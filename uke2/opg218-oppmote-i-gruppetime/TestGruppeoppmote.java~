@@ -1,0 +1,3 @@
+class TestGruppeoppmote {
+    static public void main(Str[] args) {
+	Gruppeoppmote oppmote = new Gruppeoppmote;

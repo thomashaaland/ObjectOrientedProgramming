@@ -1,0 +1,9 @@
+class Differanse {
+    public static void main(String[] args) {
+	System.out.print("Oppgi verdien til x: ");
+	Scanner x = new Scanner(System.in);
+	System.out.print("Oppgi verdien til y: ");
+	Scanner y = new Scanner(System.in);
+	System.out.print("Differansen mellom x og y er " + x - y + ".");
+    }
+}

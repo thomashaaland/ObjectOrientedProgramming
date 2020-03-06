@@ -1,0 +1,4 @@
+class Skyskraper extends Bygning {
+    public Skyskraper() {
+    }
+}

@@ -1,0 +1,4 @@
+class Bygning {
+    public Bygning() {
+    }
+}

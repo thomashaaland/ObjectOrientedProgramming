@@ -1,0 +1,9 @@
+class Kvadrat extends Rektangel {
+    public Kvadrat(double side) {
+	a = side;
+    }
+
+    public area() {
+	return a*a;
+    }
+}

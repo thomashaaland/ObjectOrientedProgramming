@@ -1,0 +1,6 @@
+class Triangel {
+    public Triangel (double grunnLinje, double hoyde) {
+	a = grunnLinje;
+	b = hoyde;
+    }
+}

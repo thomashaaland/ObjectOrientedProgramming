@@ -1,0 +1,10 @@
+class Student {
+    private String navn;
+    private int totSkore;
+    private int antallQuizDeltatt;
+    public Student(String name, int totScore, int numQuizDeltatt) {
+	navn = name;
+	totSkore = totScore;
+	
+    }
+}
