@@ -1,0 +1,17 @@
+class Aapning extends HvitRute {
+    public Aapning(int kolonne, int rad, Labyrint labyrint) {
+	super(kolonne, rad, labyrint);
+    }
+
+    public void gaa(Rute fra, String rute) {
+	System.out.println("Fant åpning: " + koordinater());
+	rute = rute + "-->" + koordinater();
+	// Skru på denne for debugging
+	//System.out.println("Ruten du fant var: " + rute);
+	labyrint.leggTilUtvei(rute);
+    }
+
+    public char tilTegn() {
+	return '^';
+    }
+}
