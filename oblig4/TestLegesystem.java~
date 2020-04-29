@@ -1,3 +1,0 @@
-public static void main(String[] args) {
-    Legesystem legesystem = new Legesystem();
-    legesystem.lesFraFil("pasienter.txt");

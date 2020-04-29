@@ -1,5 +1,0 @@
-class Bil1 {
-    public void objectClass() {
-	System.out.println("Jeg er en bil!");
-    }
-}
