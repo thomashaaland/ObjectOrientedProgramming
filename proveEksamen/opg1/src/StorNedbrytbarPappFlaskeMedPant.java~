@@ -1,0 +1,3 @@
+class StorNedbrytbarPappFlaskeMedPant extends Pappemballasje implements Pant, Nedbrytbar {
+
+}

@@ -1,0 +1,61 @@
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.stage.FileChooser;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import java.io.File;
+
+public class Bildeleser extends Application {
+    @Override
+    public void start(Stage stage) {
+	// Text to check
+	Text hilsen = new Text("Hallo");
+	hilsen.setY(40);
+	hilsen.setFont(new Font(40));
+
+	
+	// Buttons
+	// For loading file
+	Button loadFile = new Button("Load file");
+	loadFile.setLayoutX(500); loadFile.setLayoutY(10);
+	LoadListener load = new LoadListener();
+	loadFile.setOnAction(load);
+	//HBox returnBox = new HBox(10);
+	//returnBox.getChildren().add(loadFile);
+	
+
+	// Make the layout
+	Pane pane = new Pane();
+	pane.getChildren().add(hilsen);
+	pane.getChildren().add(loadFile);
+	
+	Scene scene = new Scene(pane);
+
+	stage.setTitle("Bildeleser");
+	stage.setScene(scene);
+	stage.show();
+    }
+
+    // LoadListener is for loading a file
+    private class LoadListener implements EventHandler<ActionEvent> {
+	@Override
+	public void handle(ActionEvent e) {
+	    fileChooser();
+	}
+    }
+
+    private void fileChooser() {
+	FileChooser fileChooser = new FileChooser();
+	File file = fileChooser.showOpenDialog(null);
+    }
+    
+    public static void main(String[] args) {
+	Application.launch();
+    }
+}
