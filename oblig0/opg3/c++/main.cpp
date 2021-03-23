@@ -8,8 +8,11 @@ int main() {
   
   personen->skrivBilNummer();
 
-  delete bilen;
-  delete personen;
+  delete bilen; bilen = nullptr;
+  delete personen; personen = nullptr;
+
+  Bil3 bil2 = Bil3("123");
+  Person person2 = Person(&bil2);
   
   return 0;
 }
