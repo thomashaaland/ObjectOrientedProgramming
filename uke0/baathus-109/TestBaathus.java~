@@ -1,6 +1,0 @@
-class TestBaathus {
-    public static void main(String[] args) {
-	Baathus myBaathus = new Baathus(3);
-	myBaathus.settInn("Ford");
-    }
-}
