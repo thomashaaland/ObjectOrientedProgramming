@@ -9,6 +9,7 @@ class Person {
 
  public:
   Person(Bil3*);
+  ~Person();
   void skrivBilNummer();
 };
 

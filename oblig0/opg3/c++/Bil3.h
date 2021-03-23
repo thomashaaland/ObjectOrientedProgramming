@@ -9,6 +9,7 @@ class Bil3 {
  public:
   Bil3(std::string);
   std::string hentNummer();
+  ~Bil3();
 };
 
 #endif

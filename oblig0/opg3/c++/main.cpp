@@ -7,6 +7,9 @@ int main() {
   Person *personen = new Person(bilen);
   
   personen->skrivBilNummer();
+
+  delete bilen;
+  delete personen;
   
   return 0;
 }
