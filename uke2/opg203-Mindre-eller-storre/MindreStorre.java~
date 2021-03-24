@@ -1,7 +1,0 @@
-from java.util.Scanner;
-
-class MindreStorre {
-    public static void main(String[] args) {
-	
-    }
-}
