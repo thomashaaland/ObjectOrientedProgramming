@@ -25,8 +25,14 @@ int main() {
   std::unordered_map<String, Person> telefonBok2;
   telefonBok2.insert( std::unordered_map< String, Person >::value_type
 		      ("Anne", Person("Anne", "22344556", "Loveien 1") ) );
+  // Explisitt typedeklarasjon
   for (const std::pair<String, Person>& entry : telefonBok2) {
     telefonBok2.find(entry.first)->second.skrivInfo();
+  }
+
+  // Med duck-typing
+  for (auto entry : telefonBok2) {
+    entry.second.skrivInfo();
   }
   
   return 0;
