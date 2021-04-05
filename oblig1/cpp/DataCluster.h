@@ -14,6 +14,10 @@ private:
 public:
   DataCluster(int n);
   ~DataCluster();
+  void settInnNode(std::shared_ptr<Node> node);
+  int antProsessorer();
+  int nokMinne(int paaKrevdMinne);
+  int antRacks();
 };
 
 #endif
