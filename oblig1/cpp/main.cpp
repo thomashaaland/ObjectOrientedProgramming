@@ -1,6 +1,9 @@
-#include "data_cluster.h"
+#include "DataCluster.h"
+#include <memory>
+#include <cassert>
 
 int main(int argc, char** argv) {
-  data_cluster *cluster = new cluster();
+  auto abel = std::make_unique<DataCluster>(10);
+  
   return 0;
 }

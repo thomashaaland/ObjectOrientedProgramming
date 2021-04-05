@@ -1,9 +1,9 @@
 CFLAGS = -O
 GXX = g++
-SRC = main.cpp data_cluster.cpp node.cpp rack.cpp
+SRC = main.cpp Rack.cpp DataCluster.cpp Node.cpp
 OBJ = $(SRC:.cpp = .o)
 
-rackTest: main.o data_cluster.o node.o rack.o
+rackTest: main.o DataCluster.o Node.o Rack.o
 	$(GXX) $(CFLAGS) -o rackTest $(OBJ)
 
 clean:
