@@ -7,7 +7,7 @@
 
 class DataCluster {
 private:
-  std::vector<std::unique_ptr<Rack>> m_data_cluster;
+  std::vector<std::shared_ptr<Rack>> m_data_cluster;
   int m_nodes_per_rack;
   std::unique_ptr<Rack> m_rack;
   

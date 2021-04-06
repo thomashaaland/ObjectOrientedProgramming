@@ -1,6 +1,7 @@
 #include "DataCluster.h"
 #include <memory>
 #include <cassert>
+#include <iostream>
 
 int main(int argc, char** argv) {
   auto abel = std::make_unique<DataCluster>(10);
@@ -10,7 +11,13 @@ int main(int argc, char** argv) {
 
   for (int i = 0; i < 10; i++) {
     abel->settInnNode(nodeType01);
+    abel->settInnNode(nodeType02);
+    abel->settInnNode(nodeType03);
   }
+
+  std::cout << abel->nokMinne(32) << std::endl;
+  std::cout << abel->nokMinne(64) << std::endl;
+  std::cout << abel->nokMinne(128) << std::endl;
   
   return 0;
 }

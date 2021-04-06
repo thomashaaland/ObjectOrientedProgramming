@@ -18,3 +18,10 @@ int Rack::antProsessorer() {
   }
   return antall;
 }
+
+int Rack::noderMedNokMinne(int paaKrevdMinne) {
+  int nokMinne = 0;
+  for (auto node : the_rack)
+    nokMinne += node->nokMinne(paaKrevdMinne) ? 1 : 0;
+  return nokMinne;
+}
