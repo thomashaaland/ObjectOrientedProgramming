@@ -18,6 +18,9 @@ int main(int argc, char** argv) {
   std::cout << abel->nokMinne(32) << std::endl;
   std::cout << abel->nokMinne(64) << std::endl;
   std::cout << abel->nokMinne(128) << std::endl;
+
+  std::cout << abel->antProsessorer() << std::endl;
+  std::cout << abel->antRacks() << std::endl;
   
   return 0;
 }

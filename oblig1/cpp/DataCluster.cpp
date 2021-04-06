@@ -20,7 +20,10 @@ void DataCluster::settInnNode(std::shared_ptr<Node> node) {
 }
 
 int DataCluster::antProsessorer() {
-  return 0;
+  int nProc = 0;
+  for (auto rack : m_data_cluster)
+    nProc += rack->antProsessorer();
+  return nProc;
 }
 
 int DataCluster::nokMinne(int paaKrevdMinne) {
@@ -28,4 +31,8 @@ int DataCluster::nokMinne(int paaKrevdMinne) {
   for (auto rack : m_data_cluster)
     nokMinne += rack->noderMedNokMinne(paaKrevdMinne);
   return nokMinne;
+}
+
+int DataCluster::antRacks() {
+  return m_data_cluster.size();
 }
