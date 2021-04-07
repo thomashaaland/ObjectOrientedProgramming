@@ -2,8 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 
-DataCluster::DataCluster(int n) : m_nodes_per_rack(n), m_rack(std::make_unique<Rack>(n)) {}
+DataCluster::DataCluster(int n) : m_nodes_per_rack(n) {}//, m_rack(std::make_unique<Rack>(n)) {}
 DataCluster::DataCluster(const char* filename) {
   std::string line;
   std::ifstream rfile(filename);
@@ -19,9 +20,16 @@ DataCluster::DataCluster(const char* filename) {
     m_nodes_per_rack = stoi(line);
     std::shared_ptr<Rack> rack(new Rack(m_nodes_per_rack));
     m_data_cluster.push_back(std::move(rack));
+
     
     while ( getline(rfile, line) ) {
-      std::cout << line << std::endl;
+      std::stringstream ss(line);
+      ss >> nNodes;
+      ss >> memPerNode;
+      ss >> nProcPerNode;
+      std::shared_ptr<Node> node(new Node(memPerNode, nProcPerNode));
+      for (int i = 0; i < nNodes; i++) {}
+	settInnNode(std::move(node));
     }
   }
 }
