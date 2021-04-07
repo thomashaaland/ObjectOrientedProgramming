@@ -1,6 +1,30 @@
 #include "DataCluster.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 DataCluster::DataCluster(int n) : m_nodes_per_rack(n), m_rack(std::make_unique<Rack>(n)) {}
+DataCluster::DataCluster(const char* filename) {
+  std::string line;
+  std::ifstream rfile(filename);
+  if (rfile.is_open()) {
+    /*
+      Initialize local variables
+    */
+    int nNodes;
+    int memPerNode;
+    int nProcPerNode;
+    
+    getline(rfile, line);
+    m_nodes_per_rack = stoi(line);
+    std::shared_ptr<Rack> rack(new Rack(m_nodes_per_rack));
+    m_data_cluster.push_back(std::move(rack));
+    
+    while ( getline(rfile, line) ) {
+      std::cout << line << std::endl;
+    }
+  }
+}
 DataCluster::~DataCluster() {}
 
 void DataCluster::settInnNode(std::shared_ptr<Node> node) {

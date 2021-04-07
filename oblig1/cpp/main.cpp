@@ -21,6 +21,9 @@ int main(int argc, char** argv) {
 
   std::cout << abel->antProsessorer() << std::endl;
   std::cout << abel->antRacks() << std::endl;
+
+  auto abel2 = std::make_unique<DataCluster>("dataklynge.txt");
+  
   
   return 0;
 }

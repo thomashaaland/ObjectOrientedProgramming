@@ -13,6 +13,7 @@ private:
   
 public:
   DataCluster(int n);
+  DataCluster(const char* filename);
   ~DataCluster();
   void settInnNode(std::shared_ptr<Node> node);
   int antProsessorer();
