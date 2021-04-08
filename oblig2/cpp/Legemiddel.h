@@ -2,11 +2,13 @@
 #define LEGEMIDDEL_H
 
 class Legemiddel {
+ public:
   Legemiddel(const char* navn, double pris, double virkestoff);
 };
 
-class Narkotisk : Legemiddel {
-  
+class Narkotisk: public Legemiddel {
+ public:
+  Narkotisk(const char* navn, double pris, double virkestoff, int styrke);
 };
 
 #endif
