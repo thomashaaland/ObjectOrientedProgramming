@@ -3,6 +3,10 @@
 
 #include <ostream>
 
+/*
+  Classes
+*/
+
 class Legemiddel {
  private:
   const char* m_navn;
@@ -10,6 +14,7 @@ class Legemiddel {
   double m_virkestoff;
  public:
   Legemiddel(const char* navn, double pris, double virkestoff);
+  friend std::ostream& operator<<(std::ostream& out, const Legemiddel& L);
 };
 
 class Narkotisk: public Legemiddel {
@@ -20,6 +25,11 @@ class Narkotisk: public Legemiddel {
   friend std::ostream& operator<<(std::ostream& out, const Narkotisk& N);
 };
 
+/*
+  friend functions
+*/
+
+std::ostream& operator<<(std::ostream& out, const Legemiddel& L);
 std::ostream& operator<<(std::ostream& out, const Narkotisk& N);
 
 #endif
