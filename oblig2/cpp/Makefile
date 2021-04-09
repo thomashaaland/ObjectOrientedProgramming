@@ -1,10 +1,17 @@
 GXX = g++
 CFLAGS = -O
-SRC = testLegemiddel.cpp Legemiddel.cpp
-OBJ = $(SRC:.cpp = .o)
 
-testLegemiddel: $(OBJ)
-	$(GXX) $(CFLAGS) -o testLegemiddel $(OBJ)
+SRCLM = testLegemiddel.cpp Legemiddel.cpp
+OBJLM = $(SRCLM:.cpp = .o)
+
+SRCR = testResept.cpp Legemiddel.cpp
+OBJR = $(SRCR:.cpp = .o)
+
+testLegemiddel: $(OBJLM)
+	$(GXX) $(CFLAGS) -o testLegemiddel $(OBJLM)
+
+testResept: $(OBJR)
+	$(GXX) $(CFLAGS) -o testResept $(OBJR)
 
 clean:
 	rm -f core *.o
