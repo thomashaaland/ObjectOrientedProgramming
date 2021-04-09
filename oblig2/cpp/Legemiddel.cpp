@@ -28,5 +28,29 @@ Narkotisk::Narkotisk(const char* navn, double pris, const double virkestoff, con
 const int Narkotisk::hentStyrke() const { return m_styrke; }
 
 std::ostream& operator<<(std::ostream& out, const Narkotisk& N) {
-  return out << "Narkotisk " << (Legemiddel) N << "\t- Styrke: " << N.hentStyrke();
+  return out << "Narkotisk\t" << (Legemiddel) N << "\t- Styrke: " << N.hentStyrke();
+}
+
+/*
+  Vanedannende
+*/
+Vanedannende::Vanedannende(const char* navn, double pris, const double virkestoff,
+			   const int vanedannendeStyrke)
+  : Legemiddel{ navn, pris, virkestoff }, m_vanedannendeStyrke(std::move(vanedannendeStyrke))
+{}
+const int Vanedannende::hentVaneStyrke() const { return m_vanedannendeStyrke; }
+
+std::ostream& operator<<(std::ostream& out, const Vanedannende& V) {
+  return out << "Vanedannende\t" << (Legemiddel) V << "\t- Styrke: " << V.hentVaneStyrke();
+}
+
+/*
+  Vanlig
+*/
+Vanlig::Vanlig(const char* navn, double pris, const double virkestoff)
+  : Legemiddel{ navn, pris, virkestoff }
+{}
+
+std::ostream& operator<<(std::ostream& out, const Vanlig& V) {
+  return out <<"Vanlig\t\t" << (Legemiddel) V;
 }

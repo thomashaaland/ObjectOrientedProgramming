@@ -37,11 +37,32 @@ class Narkotisk: public Legemiddel {
   friend std::ostream& operator<<(std::ostream& out, const Narkotisk& N);
 };
 
+class Vanedannende: public Legemiddel {
+ private:
+  const int m_vanedannendeStyrke;
+
+ public:
+  Vanedannende(const char* navn, double pris, const double virkestoff,
+	       const int vanedannendeStyrke);
+  const int hentVaneStyrke() const;
+  
+  friend std::ostream& operator<<(std::ostream& out, const Vanedannende& V);
+};
+
+class Vanlig: public Legemiddel {
+ public:
+  Vanlig(const char* navn, double pris, const double virkestoff);
+  
+  friend std::ostream& operator<<(std::ostream& out, const Vanlig& V);
+};
+
 /*
   friend functions
 */
 
 std::ostream& operator<<(std::ostream& out, const Legemiddel& L);
 std::ostream& operator<<(std::ostream& out, const Narkotisk& N);
+std::ostream& operator<<(std::ostream& out, const Vanedannende& V);
+std::ostream& operator<<(std::ostream& out, const Vanlig& V);
 
 #endif
