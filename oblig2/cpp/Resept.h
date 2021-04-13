@@ -7,13 +7,27 @@
 
 class Resept {
  public:
-  static int count;
+  static int count;  
  protected:
-  int m_id;
+  int m_id, m_pasientId, m_reit;
+  const std::shared_ptr<Legemiddel> m_legemiddel;
+  const std::shared_ptr<Lege> m_lege;
+
+  // Constructor
   Resept(const std::shared_ptr<Legemiddel> &legemiddel,
-	 const std::shared_ptr<Lege> &lege);
+	 const std::shared_ptr<Lege> &lege,
+	 int pasientId, int reit);
+
+  // Getters
   const int hentId() const;
+  const std::shared_ptr<Legemiddel> hentLegemiddel() const;
+  const std::shared_ptr<Lege> hentLege() const;
+  const int hentPasientId() const;
+  const int hentReit() const;
+
+  // Metode for aa bruke resepten
   
+  // Friends
   friend std::ostream& operator<<(std::ostream& out, const Resept& R);
 };
 std::ostream& operator<<(std::ostream& out, const Resept& R);
