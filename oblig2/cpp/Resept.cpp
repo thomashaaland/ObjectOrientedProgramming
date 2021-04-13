@@ -36,7 +36,7 @@ const int Resept::hentReit() const
 }
 const char* Resept::farge() const
 {
-  return "";
+  return "R";
 }
 const bool Resept::bruk()
 {
@@ -60,7 +60,7 @@ Hvitresept::Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
 
 const char* Hvitresept::farge() const
 {
-  return "Hvit";
+  return "Hvitr";
 }
 
 /*
@@ -75,11 +75,14 @@ const double prisAaBetale()
 */
 std::ostream& operator<<(std::ostream& out, const Resept& R)
 {
-  return out << "resept\tID: " << R.hentId() << "\t på " <<
+  return out << R.farge() << "esept\tID: " << R.hentId() << "\t på " <<
     R.hentLegemiddel()->hentNavn() << "\tUtsteder: " << *R.hentLege() <<
     "\tPasientID:\t" << R.hentPasientId() << "\tN resepter igjen: " << R.hentReit();
 }
+
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H)
 {
-  return out << H.farge() << (Resept) H;
+  const Resept* B = &H;
+  return out << *B;
 }
+

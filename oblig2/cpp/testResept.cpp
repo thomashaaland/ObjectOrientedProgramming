@@ -30,7 +30,7 @@ int main() {
   /*
     Opprett resepter
   */
-  std::unique_ptr<Hvitresept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
+  std::unique_ptr<Resept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
 
   std::cout << *jensParacet << std::endl;
 
