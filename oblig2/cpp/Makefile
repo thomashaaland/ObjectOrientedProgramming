@@ -4,7 +4,7 @@ CFLAGS = -O
 SRCLM = testLegemiddel.cpp Legemiddel.cpp
 OBJLM = $(SRCLM:.cpp = .o)
 
-SRCR = testResept.cpp Legemiddel.cpp Lege.cpp
+SRCR = testResept.cpp Legemiddel.cpp Lege.cpp Resept.cpp
 OBJR = $(SRCR:.cpp = .o)
 
 testLegemiddel: $(OBJLM)
