@@ -1,5 +1,6 @@
 #include "Resept.h"
 
+// Resept
 Resept::Resept(const std::shared_ptr<Legemiddel> &legemiddel,
 	       const std::shared_ptr<Lege> &lege,
 	       int pasientId,
@@ -11,13 +12,6 @@ Resept::Resept(const std::shared_ptr<Legemiddel> &legemiddel,
     m_reit(reit)
 { }
 int Resept::count = 0;
-
-Hvitresept::Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
-		       const std::shared_ptr<Lege> &lege,
-		       int pasientId,
-		       int reit)
-  : Resept(legemiddel, lege, pasientId, reit)
-{ }
 
 // Getters defs
 const int Resept::hentId() const
@@ -40,6 +34,41 @@ const int Resept::hentReit() const
 {
   return m_reit;
 }
+const char* Resept::farge() const
+{
+  return "";
+}
+const bool Resept::bruk()
+{
+  if (m_reit <= 0)
+    return false;
+  else
+    {
+      m_reit--;
+      return true;
+    }
+}
+
+// Hvitresept
+Hvitresept::Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
+		       const std::shared_ptr<Lege> &lege,
+		       int pasientId,
+		       int reit)
+  : Resept(legemiddel, lege, pasientId, reit)
+{ }
+
+
+const char* Hvitresept::farge() const
+{
+  return "Hvit";
+}
+
+/*
+const double prisAaBetale()
+{
+  return 0;
+}
+*/
 
 /*
   Friend function definitions
@@ -52,5 +81,5 @@ std::ostream& operator<<(std::ostream& out, const Resept& R)
 }
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H)
 {
-  return out << "Hvit" << (Resept) H;
+  return out << H.farge() << (Resept) H;
 }

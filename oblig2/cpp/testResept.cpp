@@ -33,6 +33,9 @@ int main() {
   std::unique_ptr<Hvitresept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
 
   std::cout << *jensParacet << std::endl;
+
+  jensParacet->bruk();
+  std::cout << *jensParacet << std::endl;
   
   return 0;
 }

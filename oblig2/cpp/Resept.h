@@ -24,20 +24,29 @@ class Resept {
   const std::shared_ptr<Lege> hentLege() const;
   const int hentPasientId() const;
   const int hentReit() const;
-
-  // Metode for aa bruke resepten
   
   // Friends
   friend std::ostream& operator<<(std::ostream& out, const Resept& R);
+
+  // Metode for aa bruke resepten
+ public:
+  const bool bruk();
+
+  // Virtuals
+  virtual const char* farge() const;
+  //virtual const double prisAaBetale();
+
 };
 std::ostream& operator<<(std::ostream& out, const Resept& R);
 
 
-class Hvitresept : Resept {
+class Hvitresept : public Resept {
  public:
   Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
 	     const std::shared_ptr<Lege> &lege, int n1, int n2); 
-
+  virtual const char* farge() const;
+  //const double prisAaBetale();
+  
   friend std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
 };
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
