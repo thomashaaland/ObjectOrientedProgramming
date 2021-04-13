@@ -44,7 +44,7 @@ class Hvitresept : public Resept {
  public:
   Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
 	     const std::shared_ptr<Lege> &lege, int n1, int n2); 
-  const char* farge() const;
+  const char* farge() const override;
   //const double prisAaBetale();
   
   friend std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
