@@ -6,8 +6,8 @@
 #include "Lege.h"
 
 class Resept {
- public:
-  static int count;  
+ private:
+  static int count;
  protected:
   int m_id, m_pasientId, m_reit;
   const std::shared_ptr<Legemiddel> m_legemiddel;
@@ -33,8 +33,8 @@ class Resept {
   const bool bruk();
 
   // Virtuals
-  virtual const char* farge() const;
-  //virtual const double prisAaBetale();
+  virtual const char* farge() const = 0;
+  virtual const double prisAaBetale() const = 0;
 
 };
 std::ostream& operator<<(std::ostream& out, const Resept& R);
@@ -43,12 +43,28 @@ std::ostream& operator<<(std::ostream& out, const Resept& R);
 class Hvitresept : public Resept {
  public:
   Hvitresept(const std::shared_ptr<Legemiddel> &legemiddel,
-	     const std::shared_ptr<Lege> &lege, int n1, int n2); 
+	     const std::shared_ptr<Lege> &lege,
+	     int pasientId, int reit); 
   const char* farge() const override;
-  //const double prisAaBetale();
+  const double prisAaBetale() const override;
   
   friend std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
 };
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
+
+class Presept : public Hvitresept {
+private:
+  static int avslag;
+  static int pReit;
+public:
+  Presept(const std::shared_ptr<Legemiddel>& legemiddel,
+	  const std::shared_ptr<Lege> &lege,
+	  int pasientId);
+  const char*farge() const override;
+  const double prisAaBetale() const override;
+  
+  friend std::ostream& operator<<(std::ostream& out, const Presept& P);
+};
+std::ostream& operator<<(std::ostream& out, const Presept& P);
 
 #endif

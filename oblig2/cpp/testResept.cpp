@@ -17,9 +17,9 @@ int main() {
   std::cout << *ppille << std::endl;
   
   /*
-    Opprett leger
+    Opprett leger m/ hack for formatering
   */
-  std::shared_ptr<Lege> jensen(new Lege("Jensen"));
+  std::shared_ptr<Lege> jensen(new Lege("Jensen\t"));
   std::shared_ptr<Lege> lesteberg(new Lege("Lesteberg"));
   std::shared_ptr<Lege> ingenmannsland(new Lege("Ingenmannsland"));
 
@@ -30,10 +30,13 @@ int main() {
   /*
     Opprett resepter
   */
-  std::unique_ptr<Resept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
-
+  std::unique_ptr<Hvitresept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
+  std::unique_ptr<Presept> astridPpille(new Presept(ppille, lesteberg, 124));
+  
+  
   std::cout << *jensParacet << std::endl;
-
+  std::cout << *astridPpille << std::endl;
+  
   jensParacet->bruk();
   std::cout << *jensParacet << std::endl;
   

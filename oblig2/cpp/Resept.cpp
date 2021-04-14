@@ -34,10 +34,6 @@ const int Resept::hentReit() const
 {
   return m_reit;
 }
-const char* Resept::farge() const
-{
-  return "R";
-}
 const bool Resept::bruk()
 {
   if (m_reit <= 0)
@@ -63,26 +59,49 @@ const char* Hvitresept::farge() const
   return "Hvitr";
 }
 
-/*
-const double prisAaBetale()
+const double Hvitresept::prisAaBetale() const
 {
-  return 0;
+  return m_legemiddel->hentPris();
 }
-*/
+
+// Presept
+Presept::Presept(const std::shared_ptr<Legemiddel> &legemiddel,
+		 const std::shared_ptr<Lege> &lege,
+		 int pasientId)
+  : Hvitresept(legemiddel, lege, pasientId, pReit)
+{ }
+
+const char* Presept::farge() const
+{
+  return "P r";
+}
+const double Presept::prisAaBetale() const
+{
+  return m_legemiddel->hentPris() - avslag;
+}
+
+// Static declarations
+int Presept::avslag = 108;
+int Presept::pReit = 3;
 
 /*
   Friend function definitions
 */
 std::ostream& operator<<(std::ostream& out, const Resept& R)
 {
-  return out << R.farge() << "esept\tID: " << R.hentId() << "\t på " <<
-    R.hentLegemiddel()->hentNavn() << "\tUtsteder: " << *R.hentLege() <<
-    "\tPasientID:\t" << R.hentPasientId() << "\tN resepter igjen: " << R.hentReit();
+  return out << R.farge() << "esept\tID: " << R.hentId() << "\t" <<
+    R.hentLegemiddel()->hentNavn() << "\t| Utsteder: " << *R.hentLege() <<
+    "\t| PasientID: " << R.hentPasientId() << "\t| N resepter igjen: " <<
+    R.hentReit() << "\t| ";
 }
 
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H)
 {
   const Resept* B = &H;
-  return out << *B;
+  return out << *B << "Pris: " << H.prisAaBetale();
 }
-
+std::ostream& operator<<(std::ostream& out, const Presept& P)
+{
+  const Hvitresept* H = &P;
+  return out << *H;
+}
