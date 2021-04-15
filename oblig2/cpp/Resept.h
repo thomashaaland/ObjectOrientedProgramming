@@ -52,6 +52,9 @@ class Hvitresept : public Resept {
 };
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
 
+/*
+  P resept
+*/
 class Presept : public Hvitresept {
 private:
   static int avslag;
@@ -66,5 +69,7 @@ public:
   friend std::ostream& operator<<(std::ostream& out, const Presept& P);
 };
 std::ostream& operator<<(std::ostream& out, const Presept& P);
+
+
 
 #endif
