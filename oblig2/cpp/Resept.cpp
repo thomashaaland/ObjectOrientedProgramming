@@ -5,13 +5,12 @@ Resept::Resept(const std::shared_ptr<Legemiddel> &legemiddel,
 	       const std::shared_ptr<Lege> &lege,
 	       int pasientId,
 	       int reit)
-  : m_id(count++),
+  : m_id(s_count++),
     m_legemiddel(std::move(legemiddel)),
     m_lege(std::move(lege)),
     m_pasientId(pasientId),
     m_reit(reit)
 { }
-int Resept::count = 0;
 
 // Getters defs
 const int Resept::hentId() const
@@ -68,7 +67,7 @@ const double Hvitresept::prisAaBetale() const
 Presept::Presept(const std::shared_ptr<Legemiddel> &legemiddel,
 		 const std::shared_ptr<Lege> &lege,
 		 int pasientId)
-  : Hvitresept(legemiddel, lege, pasientId, pReit)
+  : Hvitresept(legemiddel, lege, pasientId, s_pReit)
 { }
 
 const char* Presept::farge() const
@@ -77,12 +76,27 @@ const char* Presept::farge() const
 }
 const double Presept::prisAaBetale() const
 {
-  return m_legemiddel->hentPris() - avslag;
+  return m_legemiddel->hentPris() - s_avslag;
+}
+
+/*
+  Militaerresept
+*/
+Militaerresept::Militaerresept(const std::shared_ptr<Legemiddel> &legemiddel,
+			       const std::shared_ptr<Lege> &lege,
+			       int pasientId, int reit)
+  : Hvitresept(legemiddel, lege, pasientId, reit)
+{ }
+const double Militaerresept::prisAaBetale() const
+{
+  return Militaerresept::s_prisAaBetale;
 }
 
 // Static declarations
-int Presept::avslag = 108;
-int Presept::pReit = 3;
+int Resept::s_count = 0;
+int Presept::s_avslag = 108;
+int Presept::s_pReit = 3;
+int Militaerresept::s_prisAaBetale = 0;
 
 /*
   Friend function definitions
@@ -94,7 +108,6 @@ std::ostream& operator<<(std::ostream& out, const Resept& R)
     "\t| PasientID: " << R.hentPasientId() << "\t| N resepter igjen: " <<
     R.hentReit() << "\t| ";
 }
-
 std::ostream& operator<<(std::ostream& out, const Hvitresept& H)
 {
   const Resept* B = &H;
@@ -103,5 +116,10 @@ std::ostream& operator<<(std::ostream& out, const Hvitresept& H)
 std::ostream& operator<<(std::ostream& out, const Presept& P)
 {
   const Hvitresept* H = &P;
+  return out << *H;
+}
+std::ostream& operator<<(std::ostream& out, const Militaerresept& M)
+{
+  const Hvitresept* H = &M;
   return out << *H;
 }

@@ -30,16 +30,16 @@ int main() {
   /*
     Opprett resepter
   */
-  std::unique_ptr<Hvitresept> jensParacet(new Hvitresept(paracet, jensen, 123, 2));
-  std::unique_ptr<Presept> astridPpille(new Presept(ppille, lesteberg, 124));
-  std::unique_ptr<Militaerresept> knudsenOpium(new Militaerresept(opium,
-								  ingenmannsland,
-								  125,
-								  10));
+  std::unique_ptr<Hvitresept>
+    jensParacet(new Hvitresept(paracet, jensen, 123, 2));
+  std::unique_ptr<Presept>
+    astridPpille(new Presept(ppille, lesteberg, 124));
+  std::unique_ptr<Militaerresept>
+    knudsenOpium(new Militaerresept(opium, ingenmannsland, 125, 10));
   
   std::cout << *jensParacet << std::endl;
   std::cout << *astridPpille << std::endl;
-  std::cout << *knudesnOpium << std::endl;
+  std::cout << *knudsenOpium << std::endl;
   
   jensParacet->bruk();
   std::cout << *jensParacet << std::endl;

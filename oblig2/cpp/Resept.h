@@ -7,7 +7,7 @@
 
 class Resept {
  private:
-  static int count;
+  static int s_count;
  protected:
   int m_id, m_pasientId, m_reit;
   const std::shared_ptr<Legemiddel> m_legemiddel;
@@ -57,8 +57,8 @@ std::ostream& operator<<(std::ostream& out, const Hvitresept& H);
 */
 class Presept : public Hvitresept {
 private:
-  static int avslag;
-  static int pReit;
+  static int s_avslag;
+  static int s_pReit;
 public:
   Presept(const std::shared_ptr<Legemiddel>& legemiddel,
 	  const std::shared_ptr<Lege> &lege,
@@ -70,6 +70,18 @@ public:
 };
 std::ostream& operator<<(std::ostream& out, const Presept& P);
 
+class Militaerresept : public Hvitresept {
+private:
+  static int s_prisAaBetale;
+public:
+  Militaerresept(const std::shared_ptr<Legemiddel>& legemiddel,
+		 const std::shared_ptr<Lege>& lege,
+		 int pasientId, int reit);
+  const double prisAaBetale() const override;
+  
+  friend std::ostream& operator<<(std::ostream& out, const Militaerresept& M);
+};
+std::ostream& operator<<(std::ostream& out, const Militaerresept& M);
 
 
 #endif
