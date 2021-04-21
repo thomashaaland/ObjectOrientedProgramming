@@ -42,7 +42,19 @@ int main() {
   std::cout << *knudsenOpium << std::endl;
   
   jensParacet->bruk();
+  jensParacet->bruk();
+  jensParacet->bruk();
   std::cout << *jensParacet << std::endl;
+
+  astridPpille->bruk();
+  astridPpille->bruk();
+  astridPpille->bruk();
+  std::cout << *astridPpille << std::endl;
+
+  knudsenOpium->bruk();
+  knudsenOpium->bruk();
+  knudsenOpium->bruk();
+  std::cout << *knudsenOpium << std::endl;
   
   return 0;
 }
