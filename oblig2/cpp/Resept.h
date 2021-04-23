@@ -61,7 +61,7 @@ private:
   static int s_pReit;
 public:
   Presept(const std::shared_ptr<Legemiddel>& legemiddel,
-	  const std::shared_ptr<Lege> &lege,
+	  const std::shared_ptr<Spesialist> &lege,
 	  int pasientId);
   const char*farge() const override;
   const double prisAaBetale() const override;
@@ -75,7 +75,7 @@ private:
   static int s_prisAaBetale;
 public:
   Militaerresept(const std::shared_ptr<Legemiddel>& legemiddel,
-		 const std::shared_ptr<Lege>& lege,
+		 const std::shared_ptr<Spesialist>& lege,
 		 int pasientId, int reit);
   const double prisAaBetale() const override;
   

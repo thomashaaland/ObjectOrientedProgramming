@@ -65,9 +65,9 @@ const double Hvitresept::prisAaBetale() const
 
 // Presept
 Presept::Presept(const std::shared_ptr<Legemiddel> &legemiddel,
-		 const std::shared_ptr<Lege> &lege,
+		 const std::shared_ptr<Spesialist> &lege,
 		 int pasientId)
-  : Hvitresept(legemiddel, lege, pasientId, s_pReit)
+  : Hvitresept(legemiddel, std::static_pointer_cast<Lege>(lege), pasientId, s_pReit)
 { }
 
 const char* Presept::farge() const
@@ -83,9 +83,9 @@ const double Presept::prisAaBetale() const
   Militaerresept
 */
 Militaerresept::Militaerresept(const std::shared_ptr<Legemiddel> &legemiddel,
-			       const std::shared_ptr<Lege> &lege,
+			       const std::shared_ptr<Spesialist> &lege,
 			       int pasientId, int reit)
-  : Hvitresept(legemiddel, lege, pasientId, reit)
+  : Hvitresept(legemiddel, std::static_pointer_cast<Lege>(lege), pasientId, reit)
 { }
 const double Militaerresept::prisAaBetale() const
 {
