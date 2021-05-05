@@ -23,6 +23,8 @@ template <class T>
 class Lenkeliste : virtual public Liste<T>
 {
  public:
+  Lenkeliste();
+  
   int stoerrelse() override;
   void leggTil(int pos, T x) override;
   void leggTil(T x) override;
@@ -38,9 +40,10 @@ class Lenkeliste : virtual public Liste<T>
     Node(T x);
     Node* neste;
     T data;
-  private:
-    
-  }
+  };
+
+  Node* m_start;
+  int m_ant;
 };
 
 #endif

@@ -4,7 +4,7 @@
 void testTom()
 {
   std::cout << "Tester tom liste" << std::endl;
-  Liste<std::string>* liste = new Lenkeliste<std::string>;
+  Liste<int>* liste = new Lenkeliste<int>;
 }
 
 int main()
