@@ -92,6 +92,23 @@ const double Militaerresept::prisAaBetale() const
   return Militaerresept::s_prisAaBetale;
 }
 
+/*
+  Blaaresept
+*/
+Blaaresept::Blaaresept(const std::shared_ptr<Legemiddel>& legemiddel,
+		       const std::shared_ptr<Lege>& lege,
+		       int pasientId, int reit)
+  : Resept(legemiddel, lege, pasientId, reit)
+{ }
+const char* Blaaresept::farge() const
+{
+  return "Blaa r";
+}
+const double Blaaresept::prisAaBetale() const
+{
+  return m_legemiddel->hentPris() * (1 - rabatt);
+}
+
 // Static declarations
 int Resept::s_count = 0;
 int Presept::s_avslag = 108;
@@ -122,4 +139,9 @@ std::ostream& operator<<(std::ostream& out, const Militaerresept& M)
 {
   const Hvitresept* H = &M;
   return out << *H;
+}
+std::ostream& operator<<(std::ostream& out, const Blaaresept& B)
+{
+  const Resept* R = &B;
+  return out << *R << "Pris: " << B.prisAaBetale();;
 }

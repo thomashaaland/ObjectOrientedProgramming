@@ -83,5 +83,20 @@ public:
 };
 std::ostream& operator<<(std::ostream& out, const Militaerresept& M);
 
+class Blaaresept : public Resept
+{
+public:
+  Blaaresept(const std::shared_ptr<Legemiddel>& legemiddel,
+	     const std::shared_ptr<Lege>& lege,
+	     int pasientId, int reit);
+
+  const char* farge() const override;
+  const double prisAaBetale() const override;
+
+  friend std::ostream& operator<<(std::ostream& out, const Blaaresept& B);
+  
+private:
+  static constexpr double rabatt = 0.75;
+};
 
 #endif
