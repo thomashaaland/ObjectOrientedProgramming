@@ -1,5 +1,5 @@
 GXX = g++
-SRC = testLenkeliste.cpp
+SRC = testLenkeliste.cpp Liste.cpp
 OBJ = $(SRC:.cpp = .o)
 
 testLenkeliste:

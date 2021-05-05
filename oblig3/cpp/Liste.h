@@ -1,6 +1,9 @@
 #ifndef Liste_H
 #define Liste_H
 
+/*
+  Liste virtual class
+*/
 template <class T>
 class Liste {
  public:
@@ -11,6 +14,33 @@ class Liste {
   virtual T hent(int pos) = 0;
   virtual T fjern(int pos) = 0;
   virtual T fjern() = 0;
+};
+
+/*
+  Lenkeliste
+*/
+template <class T>
+class Lenkeliste : virtual public Liste<T>
+{
+ public:
+  int stoerrelse() override;
+  void leggTil(int pos, T x) override;
+  void leggTil(T x) override;
+  void sett(int pos, T x) override;
+  T hent(int pos) override;
+  T fjern(int pos) override;
+  T fjern() override;
+  
+ protected:
+  class Node
+  {
+  public:
+    Node(T x);
+    Node* neste;
+    T data;
+  private:
+    
+  }
 };
 
 #endif
