@@ -1,10 +1,12 @@
 #ifndef Liste_H
 #define Liste_H
 
+#include <string>
+
 /*
   Liste virtual class
 */
-template <class T>
+template <typename T>
 class Liste {
  public:
   virtual int stoerrelse() = 0;
@@ -19,7 +21,7 @@ class Liste {
 /*
   Lenkeliste
 */
-template <class T>
+template <typename T>
 class Lenkeliste : virtual public Liste<T>
 {
  public:

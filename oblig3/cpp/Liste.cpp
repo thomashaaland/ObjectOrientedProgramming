@@ -1,22 +1,29 @@
 #include "Liste.h"
 
-template<class T>
+template<typename T>
 Lenkeliste<T>::Lenkeliste()
   : m_ant(0)
 { }
 
-template<class T>
+template<typename T>
 int Lenkeliste<T>::stoerrelse()
 {
-  return m_ant;
+  int ant = 0;
+  Node * p = m_start;
+  while (p)
+    {
+      p = p->neste;
+      ant++;
+    }
+  return ant;
 }
-template<class T>
+template<typename T>
 void Lenkeliste<T>::leggTil(int pos, T x)
 {
   leggTil(x);
 }
 
-template<class T>
+template<typename T>
 void Lenkeliste<T>::leggTil(T x)
 {
   Node* temp = new Node(x);
@@ -35,7 +42,7 @@ void Lenkeliste<T>::leggTil(T x)
     }
 }
 
-template<class T>
+template<typename T>
 void Lenkeliste<T>::sett(int pos, T x)
 {
   Node* p = m_start;
@@ -44,7 +51,7 @@ void Lenkeliste<T>::sett(int pos, T x)
   p->data = x;
 }
 
-template<class T>
+template<typename T>
 T Lenkeliste<T>::hent(int pos)
 {
   Node* p = m_start;
@@ -53,7 +60,7 @@ T Lenkeliste<T>::hent(int pos)
   return p->data;
 }
 
-template<class T>
+template<typename T>
 T Lenkeliste<T>::fjern(int pos)
 {
   Node* p = m_start;
@@ -80,18 +87,27 @@ T Lenkeliste<T>::fjern(int pos)
       return d;
     }
 }
-template<class T>
+template<typename T>
 T Lenkeliste<T>::fjern()
 {
   Node* p = m_start;
+  Node* prev = p;
   while (p)
-    p = p->neste;
-  return ;
+    {
+      prev = p;
+      p = p->neste;
+    }
+  prev->neste = nullptr;
+  delete p;
+  return prev->data;
 }
 
-template<class T>
+template<typename T>
 Lenkeliste<T>::Node::Node(T x)
 {
   data = x;
   neste = nullptr;
 }
+
+template class Liste<std::string>;
+template class Lenkeliste<std::string>;
