@@ -63,30 +63,31 @@ T Lenkeliste<T>::hent(int pos)
 template<typename T>
 T Lenkeliste<T>::fjern(int pos)
 {
-  Node* p = m_start;
-  Node* prev = p;
-  T d;
-  while (pos-- && p)
+  if (pos == 0)
+    return fjernForste();
+  else
+    return fjernForste();
+}
+template<typename T>
+T Lenkeliste<T>::fjernForste()
+{
+  T data;
+  if (m_start && m_start->neste)
     {
-      prev = p;
-      p = p->neste;
-    }
-  //if (pos > 0) return nullptr;
-  if (p)
-    {
-      prev->neste = p->neste;
-      d = p->data;
-      delete p;
-      return d;
+      data = m_start->data;
+      Node* p = m_start->neste;
+      delete m_start;
+      m_start = p;
     }
   else
     {
-      prev->neste = nullptr;
-      d = p->data;
-      delete p;
-      return d;
+      data = m_start->data;
+      delete m_start;
+      m_start = nullptr;
     }
+  return data;
 }
+
 template<typename T>
 T Lenkeliste<T>::fjern()
 {
@@ -111,3 +112,6 @@ Lenkeliste<T>::Node::Node(T x)
 
 template class Liste<std::string>;
 template class Lenkeliste<std::string>;
+
+template class Liste<int>;
+template class Lenkeliste<int>;

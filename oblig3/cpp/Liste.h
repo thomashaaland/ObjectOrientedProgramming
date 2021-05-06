@@ -46,6 +46,9 @@ class Lenkeliste : virtual public Liste<T>
 
   Node* m_start;
   int m_ant;
+
+private:
+  T fjernForste();
 };
 
 #endif
