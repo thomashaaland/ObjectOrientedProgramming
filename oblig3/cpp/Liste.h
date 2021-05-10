@@ -2,6 +2,7 @@
 #define Liste_H
 
 #include <string>
+#include <iostream>
 
 /*
   Liste virtual class
@@ -35,7 +36,6 @@ class Lenkeliste : virtual public Liste<T>
   T fjern(int pos) override;
   T fjern() override;
   
- protected:
   class Node
   {
   public:
@@ -43,12 +43,14 @@ class Lenkeliste : virtual public Liste<T>
     Node* neste;
     T data;
   };
-
+  
+protected:
   Node* m_start;
   int m_ant;
-
+  
 private:
   T fjernForste();
+  Node* iterate(int pos);
 };
 
 #endif

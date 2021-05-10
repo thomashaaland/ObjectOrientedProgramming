@@ -53,7 +53,7 @@ void sjekkPasserte()
 {
   antallTester++;
   antallPasserte++;
-  std::cout << "- Test " + antallPasserte << ": OK" << std::endl;
+  std::cout << "- Test " << antallPasserte << ": OK" << std::endl;
 }
 
 void sjekkFeilet(const char* testmelding)

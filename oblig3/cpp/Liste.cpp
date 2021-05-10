@@ -20,24 +20,26 @@ int Lenkeliste<T>::stoerrelse()
 template<typename T>
 void Lenkeliste<T>::leggTil(int pos, T x)
 {
-  leggTil(x);
+  if (pos == 0) leggTil(x);
+  else
+    {
+      Node* p = iterate(pos);
+      Node* temp = new Node(x);
+      temp->neste = p->neste;
+      p->neste = temp;
+    }
 }
 
+// Legg til i starten av lista.
 template<typename T>
 void Lenkeliste<T>::leggTil(T x)
 {
   Node* temp = new Node(x);
-  if (m_start)
-    {
-      Node* p = m_start;
-      while (!(p->neste))
-	{
-	  p = p->neste;
-	}
-      p->neste = temp;
-    }
+  if (m_start == nullptr)
+    m_start = temp;
   else
     {
+      temp->neste = m_start;
       m_start = temp;
     }
 }
@@ -45,29 +47,46 @@ void Lenkeliste<T>::leggTil(T x)
 template<typename T>
 void Lenkeliste<T>::sett(int pos, T x)
 {
-  Node* p = m_start;
-  while (pos-- && p->neste)
-    p = p->neste;
+  Node* p = iterate(pos);
   p->data = x;
 }
 
 template<typename T>
 T Lenkeliste<T>::hent(int pos)
 {
-  Node* p = m_start;
-  while (pos-- && p->neste)
-    p = p->neste;
+  Node* p = iterate(pos);
   return p->data;
 }
 
 template<typename T>
 T Lenkeliste<T>::fjern(int pos)
 {
+  T data;
   if (pos == 0)
-    return fjernForste();
+    data = fjernForste();
   else
-    return fjernForste();
+    {
+      Node* p = iterate(pos-1);
+      if (p->neste == nullptr)
+	throw "Out of bounds";
+      if (p->neste->neste == nullptr)
+	{
+	  data = p->neste->data;
+	  delete p->neste;
+	  p->neste = nullptr;
+	}
+      else
+	{
+	  data = p->neste->data;
+	  Node* pp = p->neste;
+	  p->neste = p->neste->neste;
+	  delete pp;
+	  pp = nullptr;
+	}
+    }
+  return data;
 }
+
 template<typename T>
 T Lenkeliste<T>::fjernForste()
 {
@@ -101,6 +120,18 @@ T Lenkeliste<T>::fjern()
   prev->neste = nullptr;
   delete p;
   return prev->data;
+}
+
+template<typename T>
+typename Lenkeliste<T>::Node* Lenkeliste<T>::iterate(int pos)
+{
+  Node* p = m_start;
+  while(pos-- > 0)
+    {
+      if (p == nullptr) return nullptr;
+      p = p->neste;
+    }
+  return p;
 }
 
 template<typename T>
