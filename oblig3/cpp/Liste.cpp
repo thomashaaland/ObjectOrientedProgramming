@@ -32,7 +32,7 @@ void Lenkeliste<T>::leggTil(int pos, T x)
 
 // Legg til i starten av lista.
 template<typename T>
-void Lenkeliste<T>::leggTil(T x)
+void Lenkeliste<T>::leggTilForst(T x)
 {
   Node* temp = new Node(x);
   if (m_start == nullptr)
@@ -44,12 +44,37 @@ void Lenkeliste<T>::leggTil(T x)
     }
 }
 
+// Legg til i sutten av lista.
+template<typename T>
+void Lenkeliste<T>::leggTil(T x)
+{
+  Node* temp = new Node(x);
+  if (!m_start) m_start = temp;
+  else
+    {
+      Node* p = m_start;
+      // Iterer til slutten
+      while (p->neste)
+	{
+	  p = p->neste;
+	}
+      p->neste = temp;
+    }
+}
+
 template<typename T>
 void Lenkeliste<T>::sett(int pos, T x)
 {
   Node* p = iterate(pos);
   p->data = x;
 }
+
+template<typename T>
+Lenkeliste<T>::~Lenkeliste()
+{
+  destroyNodes(m_start);
+}
+
 
 template<typename T>
 T Lenkeliste<T>::hent(int pos)
@@ -88,6 +113,35 @@ T Lenkeliste<T>::fjern(int pos)
 }
 
 template<typename T>
+T Lenkeliste<T>::fjern()
+{
+  return fjernForste();
+}
+
+// Fjern det siste elementet
+template<typename T>
+T Lenkeliste<T>::fjernSiste()
+{
+  if (!m_start) throw "List is empty";
+  T data;
+  Node* p = iterateNestSiste();
+  if (p)
+    {
+      data = p->neste->data;
+      delete p->neste;
+      p->neste = nullptr;
+    }
+  else
+    {
+      data = m_start->data;
+      delete m_start;
+      m_start = nullptr;
+    }
+  return data;
+}
+
+// Fjern det forste elementet
+template<typename T>
 T Lenkeliste<T>::fjernForste()
 {
   T data;
@@ -108,21 +162,6 @@ T Lenkeliste<T>::fjernForste()
 }
 
 template<typename T>
-T Lenkeliste<T>::fjern()
-{
-  Node* p = m_start;
-  Node* prev = p;
-  while (p)
-    {
-      prev = p;
-      p = p->neste;
-    }
-  prev->neste = nullptr;
-  delete p;
-  return prev->data;
-}
-
-template<typename T>
 typename Lenkeliste<T>::Node* Lenkeliste<T>::iterate(int pos)
 {
   Node* p = m_start;
@@ -132,6 +171,37 @@ typename Lenkeliste<T>::Node* Lenkeliste<T>::iterate(int pos)
       p = p->neste;
     }
   return p;
+}
+
+// Iterer til slutten av lista
+template<typename T>
+typename Lenkeliste<T>::Node* Lenkeliste<T>::iterateSiste()
+{
+  if (!m_start) return nullptr;
+  Node* p = m_start;
+  while (p->neste)
+    p = p->neste;
+  return p;
+}
+
+// Iterer til det nest siste elementet
+template<typename T>
+typename Lenkeliste<T>::Node* Lenkeliste<T>::iterateNestSiste()
+{
+  if (!m_start) return nullptr;
+  if (!m_start->neste) return nullptr;
+  Node* p = m_start;
+  while (p->neste->neste)
+    p = p->neste;
+  return p;
+}
+
+template<typename T>
+void Lenkeliste<T>::destroyNodes(Lenkeliste<T>::Node* node)
+{
+  if (node)
+    destroyNodes(node->neste);
+  delete node;
 }
 
 template<typename T>

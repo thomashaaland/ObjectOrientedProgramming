@@ -1,9 +1,11 @@
 GXX = g++
+CFLAGS = -O
+
 SRC = testLenkeliste.cpp Liste.cpp
 OBJ = $(SRC:.cpp = .o)
 
-testLenkeliste:
-	$(GXX) $(OBJ) -o testLenkeliste
+testLenkeliste: $(OBJ)
+	$(GXX) $(CFLAGS) -o testLenkeliste $(OBJ)
 
 clean:
-	rm *.o
+	rm -f core *.o

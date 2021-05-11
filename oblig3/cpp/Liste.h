@@ -27,6 +27,7 @@ class Lenkeliste : virtual public Liste<T>
 {
  public:
   Lenkeliste();
+  ~Lenkeliste();
   
   int stoerrelse() override;
   void leggTil(int pos, T x) override;
@@ -50,7 +51,12 @@ protected:
   
 private:
   T fjernForste();
+  T fjernSiste();
+  void leggTilForst(T x);
   Node* iterate(int pos);
+  Node* iterateSiste();
+  Node* iterateNestSiste();
+  void destroyNodes(Node* node);
 };
 
 #endif
