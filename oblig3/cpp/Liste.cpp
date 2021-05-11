@@ -20,10 +20,11 @@ int Lenkeliste<T>::stoerrelse()
 template<typename T>
 void Lenkeliste<T>::leggTil(int pos, T x)
 {
-  if (pos == 0) leggTil(x);
+  if (pos == 0) leggTilForst(x);
   else
     {
-      Node* p = iterate(pos);
+      // Finn indeksen før elementet skal inn
+      Node* p = iterate(pos-1);
       Node* temp = new Node(x);
       temp->neste = p->neste;
       p->neste = temp;
@@ -91,7 +92,7 @@ T Lenkeliste<T>::fjern(int pos)
     data = fjernForste();
   else
     {
-      Node* p = iterate(pos-1);
+      Node* p = iterate(pos);
       if (p->neste == nullptr)
 	throw "Out of bounds";
       if (p->neste->neste == nullptr)

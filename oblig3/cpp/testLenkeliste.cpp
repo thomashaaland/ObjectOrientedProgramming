@@ -48,6 +48,26 @@ void testLeggTilOgFjerningAvFlereElementer()
   sjekk<std::string>("Element 0", liste->fjern(), "fjern() i liste med 4 elementer");
   sjekk<std::string>("Element X", liste->fjern(), "fjern() (for andre gang) i liste med 3 elementer");
   sjekk<int>(2, liste->stoerrelse(), "stoerrelse() etter fjerning av 2 av 4 elementer");
+  delete liste;
+  liste = nullptr;
+}
+
+void testLeggTilPaaIndeks()
+{
+  std::cout << std::endl << "Test leggTil() og leggTil(pos) paa indeks" << std::endl;
+  Liste<std::string>* liste = new Lenkeliste<std::string>;
+  liste->leggTil(0, "Element X");
+  sjekk<std::string>("Element X", liste->hent(0), "hent(0) etter leggTil(0, \"Element X\")");
+  liste->leggTil("Element A");
+  liste->leggTil("Element B");
+  liste->leggTil(0, "Foran X");
+  liste->leggTil(2, "Foran A");
+  // Forventet rekkefolge: Foran X, Element X, Foran A, Element A, Element B
+  sjekk<std::string>("Foran X", liste->hent(0), "hent(0) etter leggTil(0, \"Foran X\")");
+  sjekk<std::string>("Foran A", liste->hent(2), "hent(2) etter flere leggTil med og uten indeks");
+  liste->leggTil(5, "Bakerst");
+  sjekk<std::string>("Bakerst", liste->hent(5), "hent(5) etter leggTil(5, \"Bakerst\")");
+  sjekk(6, liste->stoerrelse(), "stoerrelse() etter leggTil med og uten indeks");
 }
 
 template<typename T>
@@ -84,5 +104,6 @@ int main()
   testTom();
   testEttElement();
   testLeggTilOgFjerningAvFlereElementer();
+  testLeggTilPaaIndeks();
   return 0;
 }
